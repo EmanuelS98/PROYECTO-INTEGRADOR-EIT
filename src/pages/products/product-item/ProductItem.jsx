@@ -4,6 +4,7 @@ import { Text } from "@/components/texts";
 import AppContext from "@/contexts/AppContext";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
+import IconButtonRemove from "@/components/icon-buttons/IconButtonRemove";
 import { CardActionArea, Card as MuiCard } from "@mui/material";
 import PropTypes from "prop-types";
 import { useContext } from "react";
@@ -19,8 +20,9 @@ const ProductItem = (props) => {
     } = props;
 
     const navigate = useNavigate();
-    const { shoppingCartContext } = useContext(AppContext);
+    const { shoppingCartContext, productsContext } = useContext(AppContext);
     const { addArticle, subtractArticle } = shoppingCartContext;
+    const { deleteProduct } = productsContext || {};
 
     const classes = `product-item ${className ?? ""}`;
 
@@ -36,6 +38,12 @@ const ProductItem = (props) => {
         subtractArticle(product.id, 1);
     };
 
+    const handleDeleteProduct = () => {
+        if (deleteProduct) {
+            deleteProduct(product.id);
+        }
+    };
+
     const renderActions = () => {
         if (product.stock === 0) {
             return (<Text variant="p">SIN STOCK</Text>);
@@ -48,6 +56,9 @@ const ProductItem = (props) => {
                 </Skeleton>
                 <Skeleton className="product-item__actions--skeleton" isLoading={isLoading}>
                     <ButtonPrimary className="product-item__remove" size="sm" onClick={handleSubtractArticle}><RemoveCircleOutlineIcon/></ButtonPrimary>
+                </Skeleton>
+                <Skeleton className="product-item__actions--skeleton" isLoading={isLoading}>
+                    <IconButtonRemove onClick={handleDeleteProduct} />
                 </Skeleton>
             </>
         );
@@ -67,13 +78,15 @@ const ProductItem = (props) => {
 
             <div className="product-item__content">
                 <Skeleton className="product-item__name--skeleton" isLoading={isLoading}>
-                    <Text className="product-item__name" variant="h3">{product.name}</Text>
+                    <Text className="product-item__name" variant="h3">{product.name ?? "Sin nombre"}</Text>
                 </Skeleton>
                 <Skeleton className="product-item__description--skeleton" isLoading={isLoading}>
-                    <Text className="product-item__description" variant="p">{product.description}</Text>
+                    <Text className="product-item__description" variant="p">{product.description ?? "Sin descripción"}</Text>
                 </Skeleton>
                 <Skeleton className="product-item__price--skeleton" isLoading={isLoading}>
-                    <Text className="product-item__price" variant="span">${product.price.toFixed(2)}</Text>
+                    <Text className="product-item__price" variant="span">
+                        {typeof product.price === "number" ? `$${product.price.toFixed(2)}` : "Sin precio"}
+                    </Text>
                 </Skeleton>
             </div>
 
@@ -87,9 +100,9 @@ const ProductItem = (props) => {
 ProductItem.propTypes = {
     product: PropTypes.shape({
         id: PropTypes.number.isRequired,
-        name: PropTypes.string.isRequired,
-        description: PropTypes.string.isRequired,
-        price: PropTypes.number.isRequired,
+        name: PropTypes.string,
+        description: PropTypes.string,
+        price: PropTypes.number,
         stock: PropTypes.number.isRequired,
         thumbnail: PropTypes.string.isRequired,
     }),

@@ -1,17 +1,22 @@
 import AppContext from "@/contexts/AppContext";
 import { useContext } from "react";
+import PropTypes from "prop-types";
 import ProductItem from "../product-item/ProductItem";
 import ProductNewItem from "../product-new-item/ProductNewItem";
 import "./product-gallery.scss";
 
-const ProductGallery = () => {
+const ProductGallery = ({ search }) => {
     const { productsContext } = useContext(AppContext);
     const { products, isLoading } = productsContext;
 
+    const filteredProducts = products.filter((product) =>
+        product.name.toLowerCase().includes((search ?? "").toLowerCase()),
+    );
+
     return (
         <div className="product-gallery">
-            <ProductNewItem/>
-            {products.map((product) => (
+            <ProductNewItem />
+            {filteredProducts.map((product) => (
                 <ProductItem
                     key={product.id}
                     product={product}
@@ -19,6 +24,10 @@ const ProductGallery = () => {
             ))}
         </div>
     );
+};
+
+ProductGallery.propTypes = {
+    search: PropTypes.string,
 };
 
 export default ProductGallery;
