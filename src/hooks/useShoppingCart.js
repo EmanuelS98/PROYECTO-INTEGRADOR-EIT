@@ -81,6 +81,21 @@ export const useShoppingCart = () => {
         }
     };
 
+    const removeArticle = async (idProduct) => {
+        const articles = shoppingCart.articles;
+        const filteredArticles = articles.filter((item) => item.id !== parseInt(idProduct));
+        
+        const data = createShoppingCartSchema(filteredArticles);
+        localStorage.setItem(KEY_SHOPPING_CART, JSON.stringify(data));
+        setShoppingCart(data);
+    };
+
+    const clearCart = () => {
+        const data = createShoppingCartSchema();
+        localStorage.setItem(KEY_SHOPPING_CART, JSON.stringify(data));
+        setShoppingCart(data);
+    };
+
     useEffect(() => {
         getShoppingCart();
     }, []);
@@ -89,5 +104,7 @@ export const useShoppingCart = () => {
         shoppingCart,
         addArticle,
         subtractArticle,
+        removeArticle,
+        clearCart,
     };
 };

@@ -1,0 +1,82 @@
+@use "../../scss/variables" as var;
+
+.slider {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    border-radius: var.$spacing-sm;
+    margin-bottom: var.$spacing-xl;
+
+    &__container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    &__slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+
+        &--active {
+            opacity: 1;
+        }
+    }
+
+    &__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    &__content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+        padding: var.$spacing-xl;
+        color: white;
+    }
+
+    &__title {
+        color: white;
+        margin-bottom: var.$spacing-sm;
+    }
+
+    &__description {
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    &__indicators {
+        position: absolute;
+        bottom: var.$spacing-md;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: var.$spacing-sm;
+    }
+
+    &__indicator {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        border: 2px solid white;
+        background: transparent;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &--active {
+            background: white;
+        }
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.7);
+        }
+    }
+}

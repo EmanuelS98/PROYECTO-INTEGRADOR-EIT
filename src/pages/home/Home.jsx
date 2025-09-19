@@ -1,3 +1,4 @@
+import Slider from "@/components/slider/Slider";
 import { Text } from "@/components/texts";
 import HighlightedParagraph from "./highlighted-paragraph/HighlightedParagraph";
 import HighlightedProducts from "./highlighted-products/HighlightedProducts";
@@ -24,6 +25,7 @@ const highlightedProducts = [
 const Home = () => {
     return (
         <div className="home">
+            <Slider />
             <Text variant="h2">Inicio</Text>
             <HighlightedParagraph>
                 ¡Bienvenido/a! Explora nuestra tienda y encuentra los mejores productos para vos.
