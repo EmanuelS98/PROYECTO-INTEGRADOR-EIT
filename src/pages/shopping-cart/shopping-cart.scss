@@ -11,19 +11,20 @@
     .table {
         &__head {
             th {
-                color: var.$color-neutro-600;
+                color: var.$color-neutro-300;
                 font-weight: var.$font-weight-regular;
                 font-size: var.$font-size-sm;
+
             }
         }
 
         &__body {
             &:hover {
-                background-color: var.$color-neutro-300;
+                background-color: var.$color-neutro-800;
             }
 
             td {
-                color: var.$color-neutro-800;
+                color: var.$color-neutro-300;
                 font-weight: var.$font-weight-regular;
                 font-size: var.$font-size-sm;
             }
@@ -40,6 +41,41 @@
             color: var.$color-neutro-800;
             font-weight: var.$font-weight-bold;
             font-size: var.$font-size-sm;
+            color: var.$color-neutro-300;
         }
+
+          &__form{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: var.$font-size-xl;
+        height: 200px;
+        padding: var.$font-size-xl;
+
+    @media (max-width: 1200px) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    @media (max-width: 1024px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 576px) {
+        grid-template-columns: 1fr;
+        align-items: start;
+    }
+
+        &--actions{
+            display: flex;
+            gap: var.$font-size-xl;
+        }
+    }
+    }
+
+    &__button{
+        color: var.$color-neutro-300;
     }
 }

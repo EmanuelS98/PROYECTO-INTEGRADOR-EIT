@@ -1,16 +1,33 @@
 import { Text } from "@/components/texts";
 import AppContext from "@/contexts/AppContext";
-import { Table, TableBody, TableCell, TableHead, TableRow } from "@mui/material";
+import { Button, Table, TableBody, TableCell, TableHead, TableRow } from "@mui/material";
 import { useContext } from "react";
 import "./shopping-cart.scss";
+import useShoppingCart from "./shooping-form/shoppingForm";
 
 const ShoppingCart = () => {
     const { shoppingCartContext } = useContext(AppContext);
-    const { shoppingCart } = shoppingCartContext;
+    const { shoppingCart, clearCart } = shoppingCartContext;
+    const { formik, isSubmitDisabled } = useShoppingCart();
 
+    const handleCancel = () => {
+        clearCart();
+        formik.resetForm();
+    };
+
+    const handleBuy = async () => {
+        for (const article of shoppingCart.articles) {
+            await updateProduct(article.id, { stock: article.stock - article.quantity });
+        }
+
+        await fetchProducts();
+
+        setOpenAlert(true);
+
+        handleCancel();
+    };
     return (
         <div className="shopping-cart">
-            <Text variant="h2">Carrito</Text>
 
             <Table>
                 <TableHead>
@@ -32,6 +49,17 @@ const ShoppingCart = () => {
                     ))}
                 </TableBody>
             </Table>
+            <>
+                <Button variant="outlined" color="error" onClick={handleCancel}>Cancelar</Button>
+                <Button
+                    className="shopping-cart__button"
+                    type="button"
+                    variant="contained"
+                    color="primary"
+                    onClick={handleBuy}>
+                        Comprar
+                </Button>
+            </>
 
             <div className="table__footer">
                 <Text className="table__total" variant="p">Total: ${shoppingCart.totalAmount?.toFixed(2)}</Text>
