@@ -6,4 +6,11 @@
     align-items: center;
     gap: var.$spacing-lg;
     padding: var.$spacing-lg;
+    background-image: url(./images/pages/fondoPrincipal.jpg);
+    background-size: cover;
+    background-position: center;
+   
+    &__text{
+        color: var.$color-neutro-300;
+    }
 }

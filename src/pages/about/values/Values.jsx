@@ -11,7 +11,7 @@ const Values = () => {
         <section className="values">
             <Text className="values__title" variant="h3">Valores</Text>
             <div>
-                <img className="values__image" src={"/images/about/values.png"} alt="Imagen de los valores de la empresa"/>
+                <img className="values__image" src={"/images/about/valores.jpg"} alt="Imagen de los valores de la empresa"/>
                 <Text className="values__description" variant="p">{institution.about.values}</Text>
             </div>
         </section>

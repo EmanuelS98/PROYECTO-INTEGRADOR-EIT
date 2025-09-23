@@ -20,7 +20,7 @@ const ContactForm = (props) => {
             <InputInquiry formik={formik} />
 
             <div className="contact-form__actions">
-                <ButtonPrimary type="submit" disabled={isSubmitDisabled()}>Enviar</ButtonPrimary>
+                <ButtonPrimary className="contact-form__btn"type="submit" disabled={isSubmitDisabled()}>Enviar</ButtonPrimary>
             </div>
 
             <div className="contact-form__alert">

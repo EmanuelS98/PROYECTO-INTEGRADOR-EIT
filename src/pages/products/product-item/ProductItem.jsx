@@ -1,10 +1,10 @@
 import { ButtonPrimary } from "@/components/buttons";
+import IconButtonRemove from "@/components/icon-buttons/IconButtonRemove";
 import { Skeleton } from "@/components/skeleton";
 import { Text } from "@/components/texts";
 import AppContext from "@/contexts/AppContext";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
-import IconButtonRemove from "@/components/icon-buttons/IconButtonRemove";
 import { CardActionArea, Card as MuiCard } from "@mui/material";
 import PropTypes from "prop-types";
 import { useContext } from "react";
@@ -22,7 +22,7 @@ const ProductItem = (props) => {
     const navigate = useNavigate();
     const { shoppingCartContext, productsContext } = useContext(AppContext);
     const { addArticle, subtractArticle } = shoppingCartContext;
-    const { deleteProduct } = productsContext || {};
+    const { removeProduct } = productsContext || {};
 
     const classes = `product-item ${className ?? ""}`;
 
@@ -39,8 +39,8 @@ const ProductItem = (props) => {
     };
 
     const handleDeleteProduct = () => {
-        if (deleteProduct) {
-            deleteProduct(product.id);
+        if (removeProduct) {
+            removeProduct(product.id);
         }
     };
 
@@ -103,8 +103,8 @@ ProductItem.propTypes = {
         name: PropTypes.string,
         description: PropTypes.string,
         price: PropTypes.number,
-        stock: PropTypes.number.isRequired,
-        thumbnail: PropTypes.string.isRequired,
+        stock: PropTypes.number,
+        thumbnail: PropTypes.string,
     }),
     isLoading: PropTypes.bool.isRequired,
     className: PropTypes.string,

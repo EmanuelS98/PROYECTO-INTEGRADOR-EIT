@@ -3,10 +3,11 @@ import "./highlighted-product-card.scss";
 
 const HighlightedProductCard = ({ product }) => (
     <div className="highlighted-product-card">
-        <img src={`/${product.thumbnail}`} alt={product.name}/>
-        <h3>{product.name}</h3>
-        <p>{product.description}</p>
-        <span>${product.price.toFixed(2)}</span>
+        <img src={`/images/products/${product.thumbnail}`} alt={product.name}/>
+        <h3 className="product-name">{product.name}</h3>
+        <p className="product-description">
+            {product.description.length > 80 ? `${product.description.substring(0, 80)}...` : product.description} </p>
+        <span className="product-price">${product.price.toFixed(2)}</span>
     </div>
 );
 

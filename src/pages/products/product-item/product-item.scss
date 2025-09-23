@@ -1,13 +1,19 @@
 @use "@/scss/variables" as var;
 
+.product-item.MuiCard-root {
+    overflow: hidden;
+    display: flex;           // 👈 AGREGAR
+    flex-direction: column;  // 👈 AGREGAR
+    height: 100%;  }
 .product-item {
     overflow: hidden;
+    background: transparent;
+    border: solid 2px var.$color-navbar;
 
     &__image {
         object-fit: cover;
-        height: auto;
+        height: 200px;
         width: 100%;
-        aspect-ratio: 16/9;
 
         &--skeleton {
             height: auto;
@@ -17,6 +23,9 @@
             margin-bottom: var.$spacing-sm;
         }
     }
+    &__name{
+    color: var.$color-neutro-300 ;
+    }
 
     &__content {
         display: flex;
@@ -24,6 +33,7 @@
         align-items: flex-start;
         gap: var.$spacing-sm;
         padding: 0 var.$spacing-md;
+        background-color: var.$color-header;
     }
 
     &__title {
@@ -39,7 +49,9 @@
     &__description {
         font-size: var.$font-size-sm;
         font-weight: var.$font-weight-regular;
-        text-align: justify;
+        align-items: center;
+        color: var.$color-neutro-300;
+        flex-grow: 1; 
 
         display: -webkit-box;
         -webkit-box-orient: vertical;
@@ -58,6 +70,8 @@
         font-size: var.$font-size-sm;
         font-weight: var.$font-weight-bold;
         align-self: flex-end;
+        color: var.$color-neutro-300;
+        margin: 12px;
 
         &--skeleton {
             height: 14px;
@@ -71,6 +85,8 @@
         justify-content: center;
         gap: var.$spacing-md;
         padding: var.$spacing-md;
+         background-color: var.$color-navbar;
+         margin-top: auto;
 
         &--skeleton {
             width: 50px;

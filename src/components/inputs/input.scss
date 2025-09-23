@@ -4,6 +4,11 @@
     position: relative;
     max-width: 400px;
 
+    div input,
+    div textarea {
+        color:var.$color-neutro-500;
+    }
+
     &__helper-text {
         position: absolute;
         bottom: -1.25rem;
@@ -23,7 +28,7 @@
         div input:focus+fieldset,
         div input:focus~.MuiOutlinedInput-notchedOutline,
         div textarea:focus~.MuiOutlinedInput-notchedOutline {
-            border-color: var.$color-primary-800 !important;
+            border: solid 2px var.$color-input;
         }
     }
 

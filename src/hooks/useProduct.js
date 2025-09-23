@@ -72,6 +72,7 @@ export const useProduct = () => {
 
         try {
             await productsApi.removeProduct(id);
+            await fetchProducts();
         } catch (error) {
             setError(error.message || "Error al eliminar producto.");
         }

@@ -1,17 +1,26 @@
 import { useState } from "react";
-import { Text } from "@/components/texts";
 import ProductGallery from "./product-gallery/ProductGallery";
-import SearchProduct from "./SearchProduct";
-import "./products.scss";
+import SearchProduct from "./search-product/SearchProduct";
+import "../products/search-product/search-product.scss";
 
 const Products = () => {
-    const [ search, setSearch ] = useState("");
+    const [ entryValue, setEntryValue ] = useState("");
+
+    const handleChange = (e) => {
+        setEntryValue(e.target.value);
+    };
+
+    const handleClear = () => {
+        setEntryValue("");
+    };
 
     return (
         <div className="products">
-            <Text variant="h2">Productos</Text>
-            <SearchProduct onSearch={setSearch} />
-            <ProductGallery search={search} />
+            <SearchProduct
+                entryValue={entryValue}
+                onChange={handleChange}
+                onClear={handleClear}/>
+            <ProductGallery entryValue={entryValue} />
         </div>
     );
 };

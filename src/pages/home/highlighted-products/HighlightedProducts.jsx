@@ -1,25 +1,26 @@
-import PropTypes from "prop-types";
+import { useContext } from "react";
+import AppContext from "@/contexts/AppContext";
 import HighlightedProductCard from "../highlighted-product-card/HighlightedProductCard";
 import "./highlighted-products.scss";
 
-const HighlightedProducts = ({ products }) => (
-    <div className="highlighted-products">
-        {products.map( (product) => (
-            <HighlightedProductCard key={product.id} product={product} />
-        ))}
-    </div>
-);
+const HighlightedProducts = () => {
+    const { productsContext } = useContext(AppContext);
+    const { products, isLoading } = productsContext;
+    const highlighted = products.slice(0, 3);
 
-HighlightedProducts.propTypes = {
-    products: PropTypes.arrayOf(
-        PropTypes.shape({
-            id: PropTypes.number.isRequired,
-            name: PropTypes.string.isRequired,
-            description: PropTypes.string,
-            price: PropTypes.number.isRequired,
-            thumbnail: PropTypes.string.isRequired,
-        }),
-    ).isRequired,
+    return (
+        <div className="highlighted-products">
+
+            <div className="highlighted-products__list">
+                {highlighted.map((product) => (
+                    <HighlightedProductCard
+                        key={product.id}
+                        product={product}
+                        isLoading={isLoading}/>
+                ))}
+            </div>
+        </div>
+    );
 };
 
 export default HighlightedProducts;

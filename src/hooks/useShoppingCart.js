@@ -5,6 +5,16 @@ const KEY_SHOPPING_CART = "shopping-cart";
 
 export const useShoppingCart = () => {
     const [ shoppingCart, setShoppingCart ] = useState({});
+
+    const clearCart = () => {
+        setShoppingCart({
+            articles: [],
+            totalAmount: 0,
+        });
+    };
+
+    const isSubmitDisabled = () => shoppingCart.articles.length === 0;
+
     const { fetchProductById } = useProduct();
 
     const createShoppingCartSchema = (articles = []) => {
@@ -89,5 +99,7 @@ export const useShoppingCart = () => {
         shoppingCart,
         addArticle,
         subtractArticle,
+        clearCart,
+        isSubmitDisabled,
     };
 };

@@ -21,7 +21,7 @@ const Header = () => {
             <IconButtonBadge
                 className="header__shopping-cart"
                 badgeContent={shoppingCart.totalQuantity ?? 0}>
-                <ShoppingCartIcon onClick={handleShoppingCart}/>
+                <ShoppingCartIcon className="header__shopping-cart-icon" onClick={handleShoppingCart}/>
             </IconButtonBadge>
         </header>
     );

@@ -1,3 +1,5 @@
+import { products } from "./data/products";
+
 const KEY_PRODUCTS = "products";
 
 const generateId = (products) => {
@@ -14,7 +16,12 @@ const generateId = (products) => {
 
 const getProductsFromLocalStorage = () => {
     const data = localStorage.getItem(KEY_PRODUCTS);
-    return JSON.parse(data) || [];
+    if (data) {
+        return JSON.parse(data);
+    }
+
+    localStorage.setItem(KEY_PRODUCTS, JSON.stringify(products));
+    return products;
 };
 
 const fetchProducts = () => {
@@ -92,7 +99,10 @@ const checkProductStock = (id, quantity) => {
     });
 };
 
+const productList = products;
+
 export default {
+    productList,
     fetchProducts,
     fetchProductById,
     createProduct,

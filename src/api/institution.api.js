@@ -1,17 +1,19 @@
-import { loremTmp } from "./data/lorem.tmp.js";
+import { mission } from "./data/mission.js";
+import { values } from "./data/values.js";
+import { vision } from "./data/vision.js";
 
 const KEY_INSTITUTION = "institution";
 
 const initialize = () => {
     const initialData = {
-        name: "Mi App",
-        address: "Av. Siempreviva 100, San Juan, Argentina",
-        phone: "264-411-2233",
-        email: "info@miapp.com",
+        name: "Gaming Store",
+        address: "Sarmiento 3302, Buenos Aires, Argentina",
+        phone: "011-4222333",
+        email: "gamingstore@miapp.com",
         about: {
-            mission: loremTmp,
-            vision: loremTmp,
-            values: loremTmp,
+            mission: mission,
+            vision: vision,
+            values: values,
         },
     };
 

@@ -3,9 +3,26 @@
 .contact {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     gap: var.$spacing-lg;
     padding: var.$spacing-lg;
+
+    h3{
+        color: var.$color-neutro-300;
+        font-size: var.$font-size-xl;
+        align-self: center;
+    }
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        url("/images/pages/contact.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 90vh;
+    border-bottom: 2px solid var.$color-navbar;
+
 
     &__content {
         display: flex;
