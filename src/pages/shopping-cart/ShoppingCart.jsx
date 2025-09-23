@@ -8,7 +8,7 @@ import useShoppingCart from "./shooping-form/shoppingForm";
 const ShoppingCart = () => {
     const { shoppingCartContext } = useContext(AppContext);
     const { shoppingCart, clearCart } = shoppingCartContext;
-    const { formik, isSubmitDisabled } = useShoppingCart();
+    const { formik } = useShoppingCart();
 
     const handleCancel = () => {
         clearCart();
