@@ -4,6 +4,7 @@
 
 import "dotenv/config";
 import express from "express";
+import { config as configCors } from "./config/cors.config.js";
 import { config as configJson } from "./config/json.config.js";
 import { connectDB } from "./config/mongoose.config.js";
 import { config as configStatic } from "./config/static.config.js";
@@ -15,6 +16,7 @@ import productRouter from "./routes/product.router.js";
 const app = express();
 configJson(app);
 configStatic(app);
+configCors(app);
 connectDB();
 
 const PORT = process.env.PORT;
@@ -31,6 +33,10 @@ app.use((req, res) => {
 });
 
 // Método oyente de solicitudes
-app.listen(PORT, HOST, () => {
-    console.log(`Ejecutándose en http://${HOST}:${PORT}`);
-});
+if( process.env.NODE_ENV !== "production") {
+    app.listen(PORT, HOST, () => {
+        console.log(`Ejecutándose en http://${HOST}:${PORT}`);
+    });
+}
+
+export default app;

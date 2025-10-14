@@ -56,7 +56,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "68e29070685e3d8eb5ba4b15",
+									"value": "68e6f6f797dcc475bb647050",
 									"description": "ID del producto"
 								}
 							]
@@ -225,39 +225,6 @@
 								"institutions"
 							]
 						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update Institution",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"name\": \"Mi App Actualizada\",\n  \"address\": \"Av. Nueva Dirección 456, San Juan, Argentina\",\n  \"phone\": \"+54 264 9999-8888\",\n  \"email\": \"contacto@miapp.com\",\n  \"logo\": \"logo.png\",\n  \"mission\": {\n    \"description\": \"Nuestra misión es desarrollar soluciones tecnológicas innovadoras que mejoren la vida de las personas.\",\n    \"image\": \"mission.png\"\n  },\n  \"vision\": {\n    \"description\": \"Ser una empresa referente en el ámbito tecnológico a nivel regional e internacional.\",\n    \"image\": \"vision.png\"\n  },\n  \"values\": {\n    \"description\": \"Innovación continua, compromiso con la calidad, trabajo en equipo, ética y transparencia.\",\n    \"image\": \"values.png\"\n  }\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/institutions",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"institutions"
-							]
-						},
-						"description": "Actualiza los datos de la institución. Todos los campos son opcionales (actualización parcial). mission, vision y values son objetos con description e image."
 					},
 					"response": []
 				}
