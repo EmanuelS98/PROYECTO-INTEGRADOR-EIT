@@ -1,7 +1,7 @@
 import { sendMail } from "../utils/mailer.js";
 import ErrorService from "./error.service.js";
 
-class InquiryService {
+export default class InquiryService {
     async sendInquiry(inquiryData) {
         const { name, surname, phone, email, inquiry } = inquiryData;
 
@@ -26,5 +26,3 @@ class InquiryService {
         return result;
     }
 }
-
-export default new InquiryService();
