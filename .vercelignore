@@ -1,11 +1,9 @@
-
-
 **/node_modules
 **/dist
 .git
 **/.gitignore
 **/.env
 **/.env.example
-**/vscode
+**/.vscode
 **/.eslint.config.js
 **/setup

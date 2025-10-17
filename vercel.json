@@ -1,35 +1,41 @@
-
-
 {
-    "version": 2,
-    "builds": [
-        {
-            "src": "backend/src/app.js",
-            "use": "@vercel/node"
-        },
-        {
-            "src": "backend/public/**",
-            "use": "@vercel/static"
-        },
-        {
-            "src": "frontend/package.json",
-            "use": "@vercel/static-build",
-            "config": { "distDir": "dist" }
-        }
-    ],
-    "routes": [
-        { "src": "/api/(.*)",
-          "dest": "backend/src/app.js"
+  "version": 2,
+  "builds": [
+    {
+      "src": "backend/public/**",
+      "use": "@vercel/static"
     },
-         { "src": "/api/public(.*)",
-          "dest": "backend/public/$1"
+    {
+      "src": "backend/src/app.js",
+      "use": "@vercel/node"
     },
-        {
-            "src": "/{.*\\.(js|css|ico|png|jpg|jpeg|svg|gif|webp|woff|woff2|ttf|eot)}",
-            "dest": "frontend/$1"
-        },
-        { "src": "/(.*)",
-          "dest": "frontend/index.html"
+    {
+      "src": "frontend/package.json",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "dist" }
     }
-    ]
+  ],
+  "routes": [
+    {
+      "src": "/api/public/(.*)",
+      "dest": "backend/public/$1"
+    },
+    {
+      "src": "/api/(.*)",
+      "dest": "backend/src/app.js"
+    },
+    {
+      "src": "/assets/(.*)",
+      "dest": "frontend/assets/$1"
+    },
+    {
+      "src": "/(.*\\.(js|css|ico|png|jpg|jpeg|svg|gif|webp|woff|woff2|ttf|eot))",
+      "dest": "frontend/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "frontend/index.html"
+    }
+  ]
 }
+

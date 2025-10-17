@@ -1,34 +1,27 @@
 {
   "name": "proyecto-integrador-eit",
   "version": "1.0.0",
-  "description": "[Vercel](https://vercel.com/emanuels-projects-24f1eb50/proyecto-integrador-eit-qpad)",
+
   "type": "module",
   "scripts": {
-    "install:backend" : "cd backend && npm install",
+    "install:backend": "cd backend && npm install",
     "install:frontend": "cd frontend && npm install",
-    "build": "npm run install:backend && install:frontend && cd frontend && npm run build",
-    "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm run dev\"",
-    "lint": "concurrently \"cd backend && npm run lint\" \"cd frontend && npm run lint\""
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/EmanuelS98/PROYECTO-INTEGRADOR-EIT.git"
+    "build": "npm run install:backend && npm run install:frontend && cd frontend && npm run build",
+    "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm run dev\" --names \"backend,frontend\"",
+    "lint": "concurrently \"cd backend && npm run lint\" \"cd frontend && npm run lint\" --names \"backend,frontend\""
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "workspaces":[
+  "author": "Sergio Regalado Alessi",
+  "license": "MIT",
+  "workspaces": [
     "backend",
     "frontend"
   ],
-  "bugs": {
-    "url": "https://github.com/EmanuelS98/PROYECTO-INTEGRADOR-EIT/issues"
-  },
-  "homepage": "https://github.com/EmanuelS98/PROYECTO-INTEGRADOR-EIT#readme",
   "devDependencies": {
-    "concurrently": "^9.2.1"
+    "@swc/core": "^1.13.5",
+    "concurrently": "^9.1.2"
   },
   "dependencies": {
-    "cors": "^2.8.5"
+    "rollup": "^4.52.4"
   }
 }
