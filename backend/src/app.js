@@ -7,6 +7,7 @@ import express from "express";
 import { config as configJson } from "./config/json.config.js";
 import { connectDB } from "./config/mongoose.config.js";
 import { config as configStatic } from "./config/static.config.js";
+import { config as configCors } from "./config/cors.config.js";
 
 import inquiryRouter from "./routes/inquiry.router.js";
 import institutionRouter from "./routes/institution.router.js";
@@ -15,6 +16,7 @@ import productRouter from "./routes/product.router.js";
 const app = express();
 configJson(app);
 configStatic(app);
+configCors(app);
 connectDB();
 
 const PORT = process.env.PORT;
