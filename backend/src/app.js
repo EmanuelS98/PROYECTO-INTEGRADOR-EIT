@@ -19,24 +19,35 @@ configStatic(app);
 configCors(app);
 connectDB();
 
-const PORT = process.env.PORT;
-const HOST = process.env.HOST;
-
 // Declaración de rutas
 app.use("/api/institutions", institutionRouter);
 app.use("/api/products", productRouter);
 app.use("/api/inquiry", inquiryRouter);
 
-// Control de rutas inexistentes
+if (process.env.NODE_ENV === "production") {
+    const filename = fileURLToPath(import.meta.url);
+    const dirname = path.dirname(filename);
+
+    app.use(express.static(path.join(dirname, "../../frontend/dist")));
+
+    // Catch-all → React Router
+    app.get("*", (req, res) => {
+        res.sendFile(path.join(__dirname, "../../frontend/dist/index.html"));
+    });
+}
+
+// Control de rutas inexistentes (solo para desarrollo)
 app.use((req, res) => {
     res.status(404).send("<h1>Error 404</h1><h3>La URL indicada no existe en este servidor</h3>");
 });
 
-// Método oyente de solicitudes
-if( process.env.NODE_ENV !== "production") {
+// ✅ Solo escuchar en entorno local
+if (process.env.NODE_ENV !== "production") {
+    const PORT = process.env.PORT || 4000;
+    const HOST = process.env.HOST || "localhost";
+
     app.listen(PORT, HOST, () => {
         console.log(`Ejecutándose en http://${HOST}:${PORT}`);
     });
 }
-
 export default app;
