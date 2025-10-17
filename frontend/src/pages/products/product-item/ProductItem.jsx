@@ -2,6 +2,7 @@ import { ButtonPrimary } from "@/components/buttons";
 import IconButtonRemove from "@/components/icon-buttons/IconButtonRemove";
 import { Skeleton } from "@/components/skeleton";
 import { Text } from "@/components/texts";
+import { API_URL_IMAGES } from "@/constants/api.constant";
 import AppContext from "@/contexts/AppContext";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
@@ -38,10 +39,10 @@ const ProductItem = (props) => {
         subtractArticle(product.id, 1);
     };
 
-    const handleDeleteProduct = () => {
-        if (removeProduct) {
-            removeProduct(product.id);
-        }
+    const getSourceImage = () => {
+        return product.thumbnail === "default.jpg"
+            ? `${API_URL_IMAGES}/${product.thumbnail}`
+            : `${API_URL_IMAGES}/products/${product.thumbnail}`;
     };
 
     const renderActions = () => {
@@ -70,7 +71,7 @@ const ProductItem = (props) => {
                 <CardActionArea>
                     <img
                         className="product-item__image"
-                        src={`/images/products/${product.thumbnail}`}
+                        src={getSourceImage()}
                         alt="Imagen del producto"
                         onClick={handleEditProduct}/>
                 </CardActionArea>
@@ -99,12 +100,13 @@ const ProductItem = (props) => {
 
 ProductItem.propTypes = {
     product: PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        name: PropTypes.string,
-        description: PropTypes.string,
-        price: PropTypes.number,
-        stock: PropTypes.number,
-        thumbnail: PropTypes.string,
+
+        id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+        price: PropTypes.number.isRequired,
+        stock: PropTypes.number.isRequired,
+        thumbnail: PropTypes.string.isRequired,
     }),
     isLoading: PropTypes.bool.isRequired,
     className: PropTypes.string,

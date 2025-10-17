@@ -160,7 +160,7 @@ PROYECTO-INTEGRADOR-EIT/
 │   │   ├── pages/             # Páginas/Vistas
 │   │   ├── scss/              # Estilos globales
 │   │   └── svg/               # Componentes SVG
-│   ├── public/                # Assets estáticos
+│   ├── public/                # Archivos estáticos (favicon, css, etc)
 │   ├── index.html
 │   ├── package.json
 │   ├── vite.config.js
@@ -192,13 +192,15 @@ Define cómo Vercel construye y enruta el proyecto:
 
 Scripts del monorepo:
 
-| Script                     | Descripción                                   |
-| -------------------------- | --------------------------------------------- |
-| `npm run install:backend`  | Instala dependencias del backend              |
-| `npm run install:frontend` | Instala dependencias del frontend             |
-| `npm run dev`              | Ejecuta backend y frontend en modo desarrollo |
-| `npm run build`            | Construye backend y frontend                  |
-| `npm run lint`             | Ejecuta linters en backend y frontend         |
+
+| Script                | Descripción                                           |
+| --------------------- | ----------------------------------------------------- |
+| `npm run install:all` | Instala dependencias del monorepo, backend y frontend |
+| `npm run dev`         | Ejecuta backend y frontend en modo desarrollo         |
+| `npm run build`       | Construye backend y frontend                          |
+| `npm run lint`        | Ejecuta linters en backend y frontend                 |
+
+
 
 ### 3. `.vercelignore`
 
@@ -260,16 +262,16 @@ Según la [documentación de Vercel](https://vercel.com/docs/monorepos), si se e
 
 Configure en Vercel (Dashboard → Project Settings → Environment Variables):
 
-| Variable         | Tipo   | Descripción                                     | Ejemplo                                                      | Ambientes |
-| ---------------- | ------ | ----------------------------------------------- | ------------------------------------------------------------ | --------- |
-| `NODE_ENV`       | String | Nombre de entorno                               | `production`                                                 | All       |
-| `FRONTEND_HOST`  | String | Host                                            | `https://proyecto-integrador-eit-three.vercel.app`           | All       |
-| `MONGODB_URI`    | String | String de conexión a MongoDB Atlas              | `mongodb+srv://user:pass@cluster.mongodb.net/eit-f3-project` | All       |
-| `SMTP_HOST`      | String | Host del servidor SMTP                          | `smtp-relay.brevo.com`                                       | All       |
-| `SMTP_PORT`      | Number | Puerto del servidor SMTP (587 TLS o 465 SSL)    | `587`                                                        | All       |
-| `SMTP_USER`      | Email  | Email completo de la cuenta SMTP                | `user@smtp-brevo.com`                                        | All       |
-| `SMTP_PASS`      | String | Contraseña de aplicación (no la personal)       | `password`                                                   | All       |
-| `SMTP_RECIPIENT` | Email  | Email destino para recibir mensajes de contacto | `info@example.com`                                           | All       |
+| Variable         | Tipo   | Descripción                                  | Ejemplo                                            | Ambient |
+| ---------------- | ------ | -------------------------------------------- | -------------------------------------------------- | ------- |
+| `NODE_ENV`       | String | Nombre de entorno                            | `production`                                       | All     |
+| `FRONTEND_HOST`  | String | Host                                         | `https://proyecto-integrador-eit-three.vercel.app` | All     |
+| `MONGODB_URI`    | String | String de conexión a MongoDB Atlas           | `mongodb+srv://user:pass@<cluster>/eit-f3-project` | All     |
+| `SMTP_HOST`      | String | Host del servidor SMTP                       | `smtp-relay.brevo.com`                             | All     |
+| `SMTP_PORT`      | Number | Puerto del servidor SMTP (587 TLS o 465 SSL) | `587`                                              | All     |
+| `SMTP_USER`      | Email  | Email completo de la cuenta SMTP             | `user@smtp-brevo.com`                              | All     |
+| `SMTP_PASS`      | String | Contraseña de aplicación (no la personal)    | `password`                                         | All     |
+| `SMTP_RECIPIENT` | Email  | Email para recibir mensajes de contacto      | `info@example.com`                                 | All     |
 
 **Nota**: No configurar `PORT` ni `HOST` en Vercel. Estas variables son manejadas automáticamente por la plataforma.
 
@@ -313,17 +315,24 @@ https://proyecto.vercel.app/api/institutions/first
 https://proyecto.vercel.app/api/inquiry/send-mail
 ```
 
-**Archivos Estáticos (Imágenes):**
+
+**Archivos Estáticos del Backend:**
 ```
 https://proyecto.vercel.app/api/public/images/institutions/logo.png
 https://proyecto.vercel.app/api/public/images/products/default.jpg
 ```
 
+**Archivos Estáticos del Frontend:**
+```
+https://proyecto.vercel.app/favicon.ico
+```
+
 **⚠️ Verificaciones Críticas:**
 - ✅ Las rutas del frontend (SPA) no devuelven 404
-- ✅ Las imágenes cargan desde `/api/public/images/`
-- ✅ El favicon se muestra correctamente
+- ✅ Las imágenes del backend cargan desde `/api/public/images/`
+- ✅ Los archivos estáticos del frontend (CSS, JS, favicon) cargan correctamente
 - ✅ La API responde correctamente en `/api/*`
+- ✅ Solo se sirven archivos con extensiones permitidas: `js`, `css`, `ico`, `png`, `jpg`, `jpeg`, `ttf`, `svg`
 
 ---
 

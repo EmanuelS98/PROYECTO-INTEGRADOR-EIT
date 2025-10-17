@@ -1,7 +1,3 @@
-/*
-    NODE JS: Ejemplo que demuestra el uso de router
-*/
-
 import "dotenv/config";
 import express from "express";
 import { config as configCors } from "./config/cors.config.js";
@@ -14,10 +10,12 @@ import institutionRouter from "./routes/institution.router.js";
 import productRouter from "./routes/product.router.js";
 
 const app = express();
+configCors(app);
 configJson(app);
 configStatic(app);
 configCors(app);
 connectDB();
+configStatic(app);
 
 // Declaración de rutas
 app.use("/api/institutions", institutionRouter);
@@ -46,8 +44,13 @@ if (process.env.NODE_ENV !== "production") {
     const PORT = process.env.PORT || 4000;
     const HOST = process.env.HOST || "localhost";
 
-    app.listen(PORT, HOST, () => {
-        console.log(`Ejecutándose en http://${HOST}:${PORT}`);
-    });
+    // Método oyente de solicitudes (solo para desarrollo local)
+    if (process.env.NODE_ENV !== "production") {
+        app.listen(PORT, HOST, () => {
+            console.log(`Ejecutándose en http://${HOST}:${PORT}`);
+        });
+    }
 }
+
+// Exportar aplicación para desplegar en Vercel
 export default app;

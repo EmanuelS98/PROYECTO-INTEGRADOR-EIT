@@ -1,3 +1,4 @@
+import { useInquiry } from "@/hooks/useInquiry";
 import { useInstitution } from "@/hooks/useInstitution";
 import { useProduct } from "@/hooks/useProduct";
 import { useShoppingCart } from "@/hooks/useShoppingCart";
@@ -8,6 +9,7 @@ const AppProvider = (props) => {
     const { children } = props;
 
     const institutionContext = useInstitution();
+    const inquiryContext = useInquiry();
     const productsContext = useProduct();
     const shoppingCartContext = useShoppingCart();
 
@@ -15,6 +17,7 @@ const AppProvider = (props) => {
         <AppContext.Provider
             value={{
                 institutionContext,
+                inquiryContext,
                 productsContext,
                 shoppingCartContext,
             }}>
