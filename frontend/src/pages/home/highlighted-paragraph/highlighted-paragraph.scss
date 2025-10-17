@@ -1,0 +1,8 @@
+@use "@/scss/variables" as var;
+
+.highlighted-paragraph {
+    padding: 1rem;
+    border-radius: 8px;
+    font-weight: bold;
+    color: var.$color-neutro-300;
+}
