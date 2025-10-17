@@ -1,17 +1,22 @@
 import ErrorService from "../services/error.service.js";
+import InquiryService from "../services/inquiry.service.js";
 import { validateSendInquiry } from "../validators/inquiry.validator.js";
 
-class InquiryController {
-    async sendMail(req, res) {
+export default class InquiryController {
+    #inquiryService;
+
+    constructor() {
+        this.#inquiryService = new InquiryService();
+    }
+
+    async sendInquiry(req, res) {
         try {
             const values = validateSendInquiry(req.body);
-            await inquiryService.sendInquiry(values);
-            res.status(200).json({ status: "success" });
+            await this.#inquiryService.sendInquiry(values);
+            res.status(204).send();
         } catch (error) {
             const handledError = ErrorService.handleError(error);
             res.status(handledError.code).json({ status: "error", message: handledError.message });
         }
     }
 }
-
-export default new InquiryController();

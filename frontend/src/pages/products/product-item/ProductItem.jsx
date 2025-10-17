@@ -2,6 +2,7 @@ import { ButtonPrimary } from "@/components/buttons";
 import IconButtonRemove from "@/components/icon-buttons/IconButtonRemove";
 import { Skeleton } from "@/components/skeleton";
 import { Text } from "@/components/texts";
+import { API_URL_IMAGES } from "@/constants/api.constant";
 import AppContext from "@/contexts/AppContext";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
@@ -42,72 +43,81 @@ const ProductItem = (props) => {
         if (removeProduct) {
             removeProduct(product.id);
         }
-    };
 
-    const renderActions = () => {
-        if (product.stock === 0) {
-            return (<Text variant="p">SIN STOCK</Text>);
-        }
+        const getSourceImage = () => {
+            return product.thumbnail === "default.jpg"
+                ? `${API_URL_IMAGES}/${product.thumbnail}`
+                : `${API_URL_IMAGES}/products/${product.thumbnail}`;
+
+        };
+
+        const renderActions = () => {
+            if (product.stock === 0) {
+                return (<Text variant="p">SIN STOCK</Text>);
+            }
+
+            return (
+                <>
+                    <Skeleton className="product-item__actions--skeleton" isLoading={isLoading}>
+                        <ButtonPrimary className="product-item__add" size="sm" onClick={handleAddArticle}><AddShoppingCartIcon/></ButtonPrimary>
+                    </Skeleton>
+                    <Skeleton className="product-item__actions--skeleton" isLoading={isLoading}>
+                        <ButtonPrimary className="product-item__remove" size="sm" onClick={handleSubtractArticle}><RemoveCircleOutlineIcon/></ButtonPrimary>
+                    </Skeleton>
+                    <Skeleton className="product-item__actions--skeleton" isLoading={isLoading}>
+                        <IconButtonRemove onClick={handleDeleteProduct} />
+                    </Skeleton>
+                </>
+            );
+        };
 
         return (
-            <>
-                <Skeleton className="product-item__actions--skeleton" isLoading={isLoading}>
-                    <ButtonPrimary className="product-item__add" size="sm" onClick={handleAddArticle}><AddShoppingCartIcon/></ButtonPrimary>
+            <MuiCard className={classes} {...restProps}>
+                <Skeleton className="product-item__image--skeleton" isLoading={isLoading}>
+                    <CardActionArea>
+                        <img
+                            className="product-item__image"
+                            src={getSourceImage()}
+                            alt="Imagen del producto"
+                            onClick={handleEditProduct}/>
+                    </CardActionArea>
                 </Skeleton>
-                <Skeleton className="product-item__actions--skeleton" isLoading={isLoading}>
-                    <ButtonPrimary className="product-item__remove" size="sm" onClick={handleSubtractArticle}><RemoveCircleOutlineIcon/></ButtonPrimary>
-                </Skeleton>
-                <Skeleton className="product-item__actions--skeleton" isLoading={isLoading}>
-                    <IconButtonRemove onClick={handleDeleteProduct} />
-                </Skeleton>
-            </>
+
+                <div className="product-item__content">
+                    <Skeleton className="product-item__name--skeleton" isLoading={isLoading}>
+                        <Text className="product-item__name" variant="h3">{product.name ?? "Sin nombre"}</Text>
+                    </Skeleton>
+                    <Skeleton className="product-item__description--skeleton" isLoading={isLoading}>
+                        <Text className="product-item__description" variant="p">{product.description ?? "Sin descripción"}</Text>
+                    </Skeleton>
+                    <Skeleton className="product-item__price--skeleton" isLoading={isLoading}>
+                        <Text className="product-item__price" variant="span">
+                            {typeof product.price === "number" ? `$${product.price.toFixed(2)}` : "Sin precio"}
+                        </Text>
+                    </Skeleton>
+                </div>
+
+                <div className="product-item__actions">
+                    {renderActions()}
+                </div>
+            </MuiCard>
         );
     };
 
-    return (
-        <MuiCard className={classes} {...restProps}>
-            <Skeleton className="product-item__image--skeleton" isLoading={isLoading}>
-                <CardActionArea>
-                    <img
-                        className="product-item__image"
-                        src={`/images/products/${product.thumbnail}`}
-                        alt="Imagen del producto"
-                        onClick={handleEditProduct}/>
-                </CardActionArea>
-            </Skeleton>
+    ProductItem.propTypes = {
+        product: PropTypes.shape({
 
-            <div className="product-item__content">
-                <Skeleton className="product-item__name--skeleton" isLoading={isLoading}>
-                    <Text className="product-item__name" variant="h3">{product.name ?? "Sin nombre"}</Text>
-                </Skeleton>
-                <Skeleton className="product-item__description--skeleton" isLoading={isLoading}>
-                    <Text className="product-item__description" variant="p">{product.description ?? "Sin descripción"}</Text>
-                </Skeleton>
-                <Skeleton className="product-item__price--skeleton" isLoading={isLoading}>
-                    <Text className="product-item__price" variant="span">
-                        {typeof product.price === "number" ? `$${product.price.toFixed(2)}` : "Sin precio"}
-                    </Text>
-                </Skeleton>
-            </div>
+            id: PropTypes.number.isRequired,
+            name: PropTypes.string,
+            description: PropTypes.string,
+            price: PropTypes.number,
+            stock: PropTypes.number,
+            thumbnail: PropTypes.string,
 
-            <div className="product-item__actions">
-                {renderActions()}
-            </div>
-        </MuiCard>
-    );
-};
-
-ProductItem.propTypes = {
-    product: PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        name: PropTypes.string,
-        description: PropTypes.string,
-        price: PropTypes.number,
-        stock: PropTypes.number,
-        thumbnail: PropTypes.string,
-    }),
-    isLoading: PropTypes.bool.isRequired,
-    className: PropTypes.string,
+        }),
+        isLoading: PropTypes.bool.isRequired,
+        className: PropTypes.string,
+    };
 };
 
 export default ProductItem;

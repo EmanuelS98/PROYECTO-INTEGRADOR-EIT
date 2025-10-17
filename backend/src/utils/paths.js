@@ -10,6 +10,7 @@ const paths = {
     public: path.join(ROOT_PATH, "public"),
     data: path.join(ROOT_PATH, "src", "data"),
     images: path.join(ROOT_PATH, "public", "images"),
+    imagesProducts: path.join(ROOT_PATH, "public", "images", "products"),
 };
 
 export default paths;

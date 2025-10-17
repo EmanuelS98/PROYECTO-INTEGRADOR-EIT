@@ -46,11 +46,11 @@ const sendInquirySchema = Joi.object({
     email: Joi
         .string()
         .trim()
-        .email()
+        .pattern(/^[a-z0-9.]+@[a-z0-9-]+\.(com$|com\.[a-z0-9]{2}$)/)
         .required()
         .messages({
             "string.empty": "El email es obligatorio",
-            "string.email": "El email debe ser válido",
+            "string.pattern.base": "El email debe ser válido",
             "any.required": "El email es obligatorio",
         }),
 
@@ -58,12 +58,12 @@ const sendInquirySchema = Joi.object({
         .string()
         .trim()
         .min(10)
-        .max(1000)
+        .max(120)
         .required()
         .messages({
             "string.empty": "La consulta es obligatoria",
             "string.min": "La consulta debe tener al menos 10 caracteres",
-            "string.max": "La consulta no puede exceder 1000 caracteres",
+            "string.max": "La consulta no puede exceder 120 caracteres",
             "any.required": "La consulta es obligatoria",
         }),
 });

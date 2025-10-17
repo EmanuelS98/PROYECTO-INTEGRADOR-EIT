@@ -1,6 +1,7 @@
 import { isValidId } from "../config/mongoose.config.js";
 import ProductModel from "../models/product.model.js";
 import { deleteImageFile, existsImageFile } from "../utils/imageFileHandler.js";
+import paths from "../utils/paths.js";
 import ErrorService from "./error.service.js";
 
 export default class ProductService {
@@ -56,8 +57,9 @@ export default class ProductService {
         if (values.highlighted) product.highlighted = values.highlighted;
 
         if (file && file.filename !== product.thumbnail) {
-            if (product.thumbnail && product.thumbnail !== "default.jpg" && await existsImageFile(product.thumbnail)) {
-                await deleteImageFile(product.thumbnail);
+            if (product.thumbnail && product.thumbnail !== "default.jpg"
+                && await existsImageFile(paths.imagesProducts, product.thumbnail)) {
+                await deleteImageFile(paths.imagesProducts, product.thumbnail);
             }
             product.thumbnail = file.filename;
         }
@@ -68,8 +70,9 @@ export default class ProductService {
     async delete(id) {
         const product = await this.#getById(id);
 
-        if (product.thumbnail && product.thumbnail !== "default.jpg" && await existsImageFile(product.thumbnail)) {
-            await deleteImageFile(product.thumbnail);
+        if (product.thumbnail && product.thumbnail !== "default.jpg"
+            && await existsImageFile(paths.imagesProducts, product.thumbnail)) {
+            await deleteImageFile(paths.imagesProducts, product.thumbnail);
         }
 
         await this.#productModel.findByIdAndDelete(id);

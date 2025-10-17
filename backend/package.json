@@ -1,5 +1,5 @@
 {
-  "name": "mi_primer_proyecto_backend",
+  "name": "proyecto-integrador-backend",
   "version": "1.0.0",
   "type": "module",
   "main": "src/app.js",
@@ -11,13 +11,14 @@
   "keywords": [],
   "author": "Sergio Regalado Alessi",
   "license": "MIT",
-  "description": "Mi primer Proyecto de Programación Backend",
+  "description": "Proyecto Integrador EIT - Backend API",
   "devDependencies": {
     "@eslint/js": "^9.35.0",
     "eslint": "^9.35.0",
     "nodemon": "^3.1.10"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^17.2.2",
     "express": "^5.1.0",
     "joi": "^18.0.1",

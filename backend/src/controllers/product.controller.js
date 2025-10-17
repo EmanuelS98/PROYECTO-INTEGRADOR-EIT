@@ -1,6 +1,7 @@
 import ErrorService from "../services/error.service.js";
 import ProductService from "../services/product.service.js";
 import { deleteImageFile } from "../utils/imageFileHandler.js";
+import paths from "../utils/paths.js";
 import { validateCreateProduct, validateProductFilters, validateUpdateProduct } from "../validators/product.validator.js";
 
 export default class ProductController {
@@ -42,7 +43,7 @@ export default class ProductController {
             res.status(201).json({ status: "success", payload: product });
         } catch (error) {
             if (req.file?.filename) {
-                await deleteImageFile(req.file.filename);
+                await deleteImageFile(paths.imagesProducts, req.file.filename);
             }
 
             const handledError = ErrorService.handleError(error);
@@ -59,7 +60,7 @@ export default class ProductController {
             res.status(200).json({ status: "success", payload: product });
         } catch (error) {
             if (req.file?.filename) {
-                await deleteImageFile(req.file.filename);
+                await deleteImageFile(paths.imagesProducts, req.file.filename);
             }
 
             const handledError = ErrorService.handleError(error);
@@ -72,7 +73,7 @@ export default class ProductController {
             const { id } = req.params;
             await this.#productService.delete(id);
 
-            res.status(200).json({ status: "success" });
+            res.status(204).send();
         } catch (error) {
             const handledError = ErrorService.handleError(error);
             res.status(handledError.code).json({ status: "error", message: handledError.message });

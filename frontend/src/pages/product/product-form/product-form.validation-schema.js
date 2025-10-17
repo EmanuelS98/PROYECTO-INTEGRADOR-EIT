@@ -2,7 +2,6 @@ import * as Yup from "yup";
 
 const NAME_MAX_LENGTH = 25;
 const DESCRIPTION_MAX_LENGTH = 100;
-const THUMBNAIL_MAX_LENGTH = 25;
 
 export const validationSchema = Yup.object({
     name: Yup
@@ -24,7 +23,6 @@ export const validationSchema = Yup.object({
         .typeError("El stock debe ser un número"),
     thumbnail: Yup
         .string()
-        .max(THUMBNAIL_MAX_LENGTH, `La imagen no puede tener más de ${THUMBNAIL_MAX_LENGTH} caracteres`)
         .required("La imagen es obligatoria")
         .typeError("La imagen debe ser de tipo string"),
 });

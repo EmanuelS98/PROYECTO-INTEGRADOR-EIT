@@ -1,6 +1,5 @@
 import fs from "fs";
-import path from "path";
-import paths from "./paths.js";
+import { join } from "path";
 
 // Valida que el nombre del archivo sea válido
 const ensureFilename = (filename) => {
@@ -10,10 +9,10 @@ const ensureFilename = (filename) => {
 };
 
 // Verifica si un archivo de imagen existe
-export const existsImageFile = async (filename) => {
+export const existsImageFile = async (filepath, filename) => {
     try {
-        const filePath = path.join(paths.images, filename);
-        await fs.promises.access(filePath, fs.constants.F_OK);
+        const path = join(filepath, filename);
+        await fs.promises.access(path, fs.constants.F_OK);
         return true;
     } catch {
         return false;
@@ -21,12 +20,12 @@ export const existsImageFile = async (filename) => {
 };
 
 // Elimina un archivo de imagen de forma segura
-export const deleteImageFile = async (filename) => {
+export const deleteImageFile = async (filepath, filename) => {
     try {
         ensureFilename(filename);
 
-        const pathFile = path.join(paths.images, filename);
-        await fs.promises.unlink(pathFile);
+        const path = join(filepath, filename);
+        await fs.promises.unlink(path);
     } catch (error) {
         throw new Error(`Error al eliminar la imagen. ${error.message}`);
     }

@@ -36,19 +36,19 @@ const createProductSchema = Joi.object({
         }),
     stock: Joi
         .number()
-        .positive()
+        .min(0)
         .required()
         .messages({
             "number.base": "El stock debe ser un número",
-            "number.positive": "El stock debe ser un número positivo",
+            "number.min": "El stock no puede ser negativo",
             "any.required": "El stock es obligatorio",
         }),
     highlighted: Joi
         .boolean()
         .default(false)
         .messages({
-            "boolean.base": "El destacado debe ser un texto",
-            "any.required": "El destacado es obligatorio",
+            "boolean.base": "La definición de producto destacado debe ser un booleano",
+            "any.required": "La definición de producto destacado es obligatoria",
         }),
 }).unknown(false).messages({
     "object.unknown": "No se permiten campos adicionales",
@@ -82,15 +82,15 @@ const updateProductSchema = Joi.object({
         }),
     stock: Joi
         .number()
-        .positive()
+        .min(0)
         .messages({
             "number.base": "El stock debe ser un número",
-            "number.positive": "El stock debe ser un número positivo",
+            "number.min": "El stock no puede ser negativo",
         }),
     highlighted: Joi
         .boolean()
         .messages({
-            "boolean.base": "El destacado debe ser un texto",
+            "boolean.base": "La definición de producto destacado debe ser un booleano",
         }),
 }).unknown(false).messages({
     "object.unknown": "No se permiten campos adicionales",
@@ -110,7 +110,7 @@ const filtersProductSchema = Joi.object({
     highlighted: Joi
         .boolean()
         .messages({
-            "boolean.base": "El filtro destacado debe ser un booleano",
+            "boolean.base": "La definición de producto destacado debe ser un booleano",
         }),
 }).unknown(false).messages({
     "object.unknown": "No se permiten campos adicionales",
