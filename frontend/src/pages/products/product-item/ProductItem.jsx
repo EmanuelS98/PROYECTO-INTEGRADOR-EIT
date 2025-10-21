@@ -1,6 +1,7 @@
 import { ButtonPrimary } from "@/components/buttons";
 import { Skeleton } from "@/components/skeleton";
 import { Text } from "@/components/texts";
+import { API_URL_IMAGES } from "@/constants/api.constant";
 import AppContext from "@/contexts/AppContext";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
@@ -36,6 +37,12 @@ const ProductItem = (props) => {
         subtractArticle(product.id, 1);
     };
 
+    const getSourceImage = () => {
+        return product.thumbnail === "default.jpg"
+            ? `${API_URL_IMAGES}/${product.thumbnail}`
+            : `${API_URL_IMAGES}/products/${product.thumbnail}`;
+    };
+
     const renderActions = () => {
         if (product.stock === 0) {
             return (<Text variant="p">SIN STOCK</Text>);
@@ -59,7 +66,7 @@ const ProductItem = (props) => {
                 <CardActionArea>
                     <img
                         className="product-item__image"
-                        src={`/images/products/${product.thumbnail}`}
+                        src={getSourceImage()}
                         alt="Imagen del producto"
                         onClick={handleEditProduct}/>
                 </CardActionArea>
@@ -86,7 +93,7 @@ const ProductItem = (props) => {
 
 ProductItem.propTypes = {
     product: PropTypes.shape({
-        id: PropTypes.number.isRequired,
+        id: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
         description: PropTypes.string.isRequired,
         price: PropTypes.number.isRequired,

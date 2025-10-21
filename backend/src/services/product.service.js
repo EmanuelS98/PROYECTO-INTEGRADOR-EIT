@@ -58,8 +58,13 @@ export default class ProductService {
 
         if (file && file.filename !== product.thumbnail) {
             if (product.thumbnail && product.thumbnail !== "default.jpg"
+<<<<<<< HEAD
                 && await existsImageFile(paths.imageProducts, product.thumbnail)) {
                 await deleteImageFile(paths.imageProducts, product.thumbnail);
+=======
+                && await existsImageFile(paths.imagesProducts, product.thumbnail)) {
+                await deleteImageFile(paths.imagesProducts, product.thumbnail);
+>>>>>>> ef1a34884deca951d691f6da9ebafb1401b38ef7
             }
             product.thumbnail = file.filename;
         }
@@ -71,8 +76,13 @@ export default class ProductService {
         const product = await this.#getById(id);
 
         if (product.thumbnail && product.thumbnail !== "default.jpg"
+<<<<<<< HEAD
             && await existsImageFile(paths.imageProducts, product.thumbnail)) {
             await deleteImageFile(paths.imageProducts, product.thumbnail);
+=======
+            && await existsImageFile(paths.imagesProducts, product.thumbnail)) {
+            await deleteImageFile(paths.imagesProducts, product.thumbnail);
+>>>>>>> ef1a34884deca951d691f6da9ebafb1401b38ef7
         }
 
         await this.#productModel.findByIdAndDelete(id);

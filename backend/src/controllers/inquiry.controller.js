@@ -2,6 +2,7 @@ import ErrorService from "../services/error.service.js";
 import InquiryService from "../services/inquiry.service.js";
 import { validateSendInquiry } from "../validators/inquiry.validator.js";
 
+<<<<<<< HEAD
 class InquiryController {
     #inquiryService;
 
@@ -10,6 +11,16 @@ class InquiryController {
     }
 
     async sendMail(req, res) {
+=======
+export default class InquiryController {
+    #inquiryService;
+
+    constructor() {
+        this.#inquiryService = new InquiryService();
+    }
+
+    async sendInquiry(req, res) {
+>>>>>>> ef1a34884deca951d691f6da9ebafb1401b38ef7
         try {
             const values = validateSendInquiry(req.body);
             await this.#inquiryService.sendInquiry(values);
@@ -20,5 +31,3 @@ class InquiryController {
         }
     }
 }
-
-export default new InquiryController();

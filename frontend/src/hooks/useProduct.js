@@ -6,12 +6,12 @@ export const useProduct = () => {
     const [ isLoading, setIsLoading ] = useState(false);
     const [ error, setError ] = useState(null);
 
-    const fetchProducts = async () => {
+    const fetchProducts = async (filters) => {
         setIsLoading(true);
         setError(null);
 
         try {
-            const data = await productsApi.fetchProducts();
+            const data = await productsApi.fetchProducts(filters);
             setProducts(data);
         } catch (error) {
             setProducts([]);
@@ -43,6 +43,7 @@ export const useProduct = () => {
 
         try {
             product = await productsApi.createProduct(values);
+            fetchProducts();
         } catch (error) {
             setError(error.message || "Error al crear producto.");
         }
@@ -58,6 +59,7 @@ export const useProduct = () => {
 
         try {
             product = await productsApi.updateProduct(id, values);
+            fetchProducts();
         } catch (error) {
             setError(error.message || "Error al modificar producto.");
         }
@@ -72,26 +74,12 @@ export const useProduct = () => {
 
         try {
             await productsApi.removeProduct(id);
+            fetchProducts();
         } catch (error) {
             setError(error.message || "Error al eliminar producto.");
         }
 
         setIsLoading(false);
-    };
-
-    const checkProductStock = async (id) => {
-        setIsLoading(true);
-        setError(null);
-        let result = false;
-
-        try {
-            result = await productsApi.checkProductStock(id);
-        } catch (error) {
-            setError(error.message || "Error al chequear stock de producto.");
-        }
-
-        setIsLoading(false);
-        return result;
     };
 
     useEffect(() => {
@@ -107,6 +95,5 @@ export const useProduct = () => {
         createProduct,
         updateProduct,
         removeProduct,
-        checkProductStock,
     };
 };
