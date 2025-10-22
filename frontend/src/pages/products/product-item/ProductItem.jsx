@@ -4,6 +4,7 @@ import { Text } from "@/components/texts";
 import { API_URL_IMAGES } from "@/constants/api.constant";
 import AppContext from "@/contexts/AppContext";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 import { CardActionArea, Card as MuiCard } from "@mui/material";
 import PropTypes from "prop-types";
@@ -20,8 +21,9 @@ const ProductItem = (props) => {
     } = props;
 
     const navigate = useNavigate();
-    const { shoppingCartContext } = useContext(AppContext);
+    const { shoppingCartContext, productsContext } = useContext(AppContext);
     const { addArticle, subtractArticle } = shoppingCartContext;
+    const { removeProduct } = productsContext || {};
 
     const classes = `product-item ${className ?? ""}`;
 
@@ -35,6 +37,12 @@ const ProductItem = (props) => {
 
     const handleSubtractArticle = () => {
         subtractArticle(product.id, 1);
+    };
+
+    const handleDeleteProduct = () => {
+        if (removeProduct) {
+            removeProduct(product.id);
+        }
     };
 
     const getSourceImage = () => {
@@ -55,6 +63,9 @@ const ProductItem = (props) => {
                 </Skeleton>
                 <Skeleton className="product-item__actions--skeleton" isLoading={isLoading}>
                     <ButtonPrimary className="product-item__remove" size="sm" onClick={handleSubtractArticle}><RemoveCircleOutlineIcon/></ButtonPrimary>
+                </Skeleton>
+                <Skeleton className="product-item__actions--skeleton" isLoading={isLoading}>
+                    <ButtonPrimary className="product-item__remove" size="sm" onClick={handleDeleteProduct}><DeleteOutlineIcon/></ButtonPrimary>
                 </Skeleton>
             </>
         );
