@@ -1,0 +1,23 @@
+@use "@/scss/variables" as var;
+
+.search-product {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin: 0.6rem 0;
+    width: 100%;
+}
+
+.search-input {
+    background-color: var.$color-neutro-300;
+    color: var.$color-neutro-900;
+    outline: none;
+    border-radius: 8px;
+}
+
+.clear-button {
+    margin-left: 20px;
+    border-radius: 8px;
+    height: 2.5rem;
+}

@@ -31,6 +31,11 @@
 
     &--valid {
 
+        input,
+        textarea {
+            color: var.$color-neutro-400;
+        }
+
         p,
         label,
         label.Mui-focused {
@@ -43,11 +48,16 @@
         div input:focus+fieldset,
         div input:focus~.MuiOutlinedInput-notchedOutline,
         div textarea:focus~.MuiOutlinedInput-notchedOutline {
-            border-color: var.$color-primary-800 !important;
+            border-color: var.$color-navbar !important;
         }
     }
 
     &--invalid {
+
+        input,
+        textarea {
+            color: var.$color-neutro-400;
+        }
 
         p,
         label,

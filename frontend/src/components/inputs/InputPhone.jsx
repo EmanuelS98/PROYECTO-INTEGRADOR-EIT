@@ -22,7 +22,9 @@ const InputPhone = (props) => {
             onBlur={formik.handleBlur}
             error={formik.touched.phone && Boolean(formik.errors.phone)}
             helperText={formik.touched.phone && formik.errors.phone}
-            endAdornment={<InputAdornment position="end"><LocalPhoneOutlinedIcon/></InputAdornment>}
+            endAdornment={<InputAdornment position="end">
+                <LocalPhoneOutlinedIcon sx={{ color: "#282828" }}/>
+            </InputAdornment>}
             inputProps={{ minLength, maxLength }}
             {...restProps}/>
     );

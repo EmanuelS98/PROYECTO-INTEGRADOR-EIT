@@ -21,7 +21,9 @@ const InputEmail = (props) => {
             onBlur={formik.handleBlur}
             error={formik.touched.email && Boolean(formik.errors.email)}
             helperText={formik.touched.email && formik.errors.email}
-            endAdornment={<InputAdornment position="end"><EmailOutlinedIcon/></InputAdornment>}
+            endAdornment={<InputAdornment position="end">
+                <EmailOutlinedIcon sx={{ color: "#282828" }}/>
+            </InputAdornment>}
             inputProps={{ maxLength }}
             {...restProps}/>
     );

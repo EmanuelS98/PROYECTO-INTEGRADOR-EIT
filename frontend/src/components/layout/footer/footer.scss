@@ -5,6 +5,7 @@
 
     padding: var.$spacing-sm 5%;
     background-color: var.$color-footer;
+    border-top: 2px solid var.$color-navbar;
 
     &__content {
         display: grid;
