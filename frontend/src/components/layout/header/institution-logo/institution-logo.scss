@@ -6,14 +6,18 @@
     gap: var.$spacing-sm;
 
     &__logo {
-        height: fit-content;
-        width: var.$font-size-xxl;
+        width: 90px;
+        height: auto;
     }
 
-    &__title {
-        font-size: var.$font-size-xxl;
-        font-weight: var.$font-weight-bold;
-        text-transform: uppercase;
+    @media (max-width: 768px) {
+        &__logo {
+            width: 45px;
+        }
+
+        &__title {
+            font-size: var.$font-size-xs;
+        }
     }
 
 }

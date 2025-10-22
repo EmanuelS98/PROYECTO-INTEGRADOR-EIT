@@ -30,20 +30,12 @@ app.use((req, res) => {
     res.status(404).send("<h1>Error 404</h1><h3>La URL indicada no existe en este servidor</h3>");
 });
 
-<<<<<<< HEAD
-// Método oyente de solicitudes
-if( process.env.NODE_ENV !== "production") {
-=======
 // Método oyente de solicitudes (solo para desarrollo local)
 if (process.env.NODE_ENV !== "production") {
->>>>>>> ef1a34884deca951d691f6da9ebafb1401b38ef7
     app.listen(PORT, HOST, () => {
         console.log(`Ejecutándose en http://${HOST}:${PORT}`);
     });
 }
 
-<<<<<<< HEAD
-=======
 // Exportar aplicación para desplegar en Vercel
->>>>>>> ef1a34884deca951d691f6da9ebafb1401b38ef7
 export default app;

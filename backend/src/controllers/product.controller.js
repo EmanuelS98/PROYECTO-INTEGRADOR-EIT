@@ -43,11 +43,7 @@ export default class ProductController {
             res.status(201).json({ status: "success", payload: product });
         } catch (error) {
             if (req.file?.filename) {
-<<<<<<< HEAD
-                await deleteImageFile(paths.imageProducts, req.file.filename);
-=======
                 await deleteImageFile(paths.imagesProducts, req.file.filename);
->>>>>>> ef1a34884deca951d691f6da9ebafb1401b38ef7
             }
 
             const handledError = ErrorService.handleError(error);
@@ -64,11 +60,7 @@ export default class ProductController {
             res.status(200).json({ status: "success", payload: product });
         } catch (error) {
             if (req.file?.filename) {
-<<<<<<< HEAD
-                await deleteImageFile(paths.imageProducts, req.file.filename);
-=======
                 await deleteImageFile(paths.imagesProducts, req.file.filename);
->>>>>>> ef1a34884deca951d691f6da9ebafb1401b38ef7
             }
 
             const handledError = ErrorService.handleError(error);

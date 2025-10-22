@@ -1,32 +1,20 @@
 db.institutions.insertOne({
-    name: "Mi App",
-    address: "Av. Siempreviva 100, San Juan, Argentina",
-    phone: "+54 264 1234-5678",
-    email: "info@miapp.com",
+    name: "Gaming Store",
+    address: "Sarmiento 330221, Buenos Aires, Argentina",
+    phone: "+54 011-4222333",
+    email: "gamingstore@miapp.com",
     logo: "logo.png",
     mission: {
-        description: "Nuestra misión es desarrollar soluciones tecnológicas innovadoras que mejoren la vida de las personas y potencien el crecimiento de las organizaciones. Nos enfocamos en ofrecer productos y servicios digitales accesibles, seguros y de alta calidad, promoviendo la transformación digital y la eficiencia operativa en cada uno de nuestros clientes. Buscamos combinar la creatividad, la tecnología y el compromiso humano para brindar experiencias que generen valor real, impulsando un futuro más conectado, inclusivo y sostenible.",
-<<<<<<< HEAD
-        image: "mission.png",
+        description: "Nuestra misión como tienda gamer es acercarte la mejor tecnología y accesorios de videojuegos al mejor precio. En un mundo en constante evolución digital, buscamos que cada jugador, ya sea casual o profesional, pueda acceder a consolas, PCs, periféricos y accesorios de calidad. Queremos que disfrutes de tus juegos favoritos con el mejor rendimiento y con una atención personalizada que te acompañe en cada paso de tu experiencia gamer.",
+        thumbnail: "mission.jpg",
     },
     vision: {
-        description: "Ser una empresa referente en el ámbito tecnológico a nivel regional e internacional, reconocida por la excelencia, la innovación y el impacto positivo de nuestras soluciones. Aspiramos a liderar la transformación digital con un enfoque centrado en las personas, convirtiéndonos en un aliado estratégico de confianza para empresas, instituciones y comunidades. Nuestra visión es construir un ecosistema tecnológico sostenible donde la innovación, la ética y el desarrollo humano convivan en equilibrio, generando oportunidades para todos.",
-        image: "vision.png",
+        description: "Nuestra visión es ser la tienda gamer de referencia, donde cada persona pueda encontrar el producto ideal para mejorar su experiencia de juego. Queremos un mundo más conectado a través del gaming, donde la diversión, la competencia y la tecnología estén al alcance de todos. Ya sea en nuestra plataforma online o en nuestro local físico, vas a poder descubrir consolas, accesorios, PC gamers y las últimas novedades del mercado. Soñamos con un futuro donde cada gamer tenga acceso a la mejor calidad, al mejor precio y con la mejor atención personalizada.",
+        thumbnail: "vision.jpg",
     },
     values: {
-        description: "En Mi App creemos que nuestros valores son la base de todo lo que hacemos. Promovemos la innovación continua, impulsando la creatividad y la búsqueda constante de nuevas soluciones tecnológicas que aporten verdadero valor a la sociedad. Nos guía un profundo compromiso con la calidad, asegurando que cada producto y servicio refleje excelencia, confiabilidad y mejora permanente. Fomentamos el trabajo en equipo y la colaboración, convencidos de que la diversidad de ideas y la unión de talentos fortalecen nuestros resultados y enriquecen nuestro entorno laboral. Actuamos siempre con ética, transparencia e integridad, construyendo relaciones basadas en la confianza y el respeto mutuo. Mantenemos una firme orientación al cliente, escuchando y comprendiendo sus necesidades para ofrecer experiencias que superen sus expectativas. Finalmente, asumimos una responsabilidad social y ambiental, contribuyendo activamente a un desarrollo sostenible y equilibrado, donde la tecnología esté al servicio del bienestar de las personas y del planeta.",
-        image: "values.png",
-=======
-        thumbnail: "mission.png",
-    },
-    vision: {
-        description: "Ser una empresa referente en el ámbito tecnológico a nivel regional e internacional, reconocida por la excelencia, la innovación y el impacto positivo de nuestras soluciones. Aspiramos a liderar la transformación digital con un enfoque centrado en las personas, convirtiéndonos en un aliado estratégico de confianza para empresas, instituciones y comunidades. Nuestra visión es construir un ecosistema tecnológico sostenible donde la innovación, la ética y el desarrollo humano convivan en equilibrio, generando oportunidades para todos.",
-        thumbnail: "vision.png",
-    },
-    values: {
-        description: "En Mi App creemos que nuestros valores son la base de todo lo que hacemos. Promovemos la innovación continua, impulsando la creatividad y la búsqueda constante de nuevas soluciones tecnológicas que aporten verdadero valor a la sociedad. Nos guía un profundo compromiso con la calidad, asegurando que cada producto y servicio refleje excelencia, confiabilidad y mejora permanente. Fomentamos el trabajo en equipo y la colaboración, convencidos de que la diversidad de ideas y la unión de talentos fortalecen nuestros resultados y enriquecen nuestro entorno laboral. Actuamos siempre con ética, transparencia e integridad, construyendo relaciones basadas en la confianza y el respeto mutuo. Mantenemos una firme orientación al cliente, escuchando y comprendiendo sus necesidades para ofrecer experiencias que superen sus expectativas. Finalmente, asumimos una responsabilidad social y ambiental, contribuyendo activamente a un desarrollo sostenible y equilibrado, donde la tecnología esté al servicio del bienestar de las personas y del planeta.",
-        thumbnail: "values.png",
->>>>>>> ef1a34884deca951d691f6da9ebafb1401b38ef7
+        description: "Nuestros valores están enfocados en vos: el gamer. Nos respaldamos en brindar calidad, confianza y atención al cliente de primera, para que tu compra sea simple y segura. Creemos que cualquier persona puede ser parte del mundo gamer, sin importar si es tu primera consola, si estás armando tu PC gamer desde cero o si buscás ese accesorio que te falta para competir al máximo nivel. Siempre vas a contar con nuestro apoyo y asesoramiento para encontrar lo que realmente necesitás.",
+        thumbnail: "values.jpg",
     },
     createdAt: new Date(),
     updatedAt: new Date()

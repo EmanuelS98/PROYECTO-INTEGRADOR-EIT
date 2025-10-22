@@ -6,4 +6,19 @@
     align-items: center;
     gap: var.$spacing-lg;
     padding: var.$spacing-lg;
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        url("/images/pages/about.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        gap: var.$spacing-lg;
+        width: 100%;
+
+    }
 }

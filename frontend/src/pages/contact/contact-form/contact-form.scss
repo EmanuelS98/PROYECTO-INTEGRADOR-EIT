@@ -6,6 +6,7 @@
     align-items: center;
     gap: var.$spacing-xl;
     width: 400px;
+    padding: var.$spacing-xs;
 
     &__image {
         width: 100%;
@@ -14,5 +15,9 @@
     &__actions {
         display: flex;
         gap: var.$spacing-md;
+    }
+
+    &__btn {
+        color: var.$color-neutro-900;
     }
 }
