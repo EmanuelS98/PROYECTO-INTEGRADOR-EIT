@@ -24,6 +24,7 @@ export const validationSchema = Yup.object({
         .string()
         .min(PHONE_MIN_LENGTH, `El teléfono debe tener al menos ${PHONE_MIN_LENGTH} caracteres`)
         .max(PHONE_MAX_LENGTH, `El teléfono no puede tener más de ${PHONE_MAX_LENGTH} caracteres`)
+        .matches(/^\d+$/, "El teléfono solo puede contener números")
         .required("El teléfono es obligatorio"),
     inquiry: Yup
         .string()
