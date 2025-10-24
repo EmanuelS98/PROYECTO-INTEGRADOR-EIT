@@ -21,4 +21,11 @@
         width: 100%;
 
     }
+
+    &__title {
+        background: linear-gradient(90deg, #0e001b, #000000);
+        border-radius: 8px;
+        padding: var.$spacing-sm;
+        color: var.$color-neutro-100;
+    }
 }

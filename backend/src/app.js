@@ -13,9 +13,7 @@ const app = express();
 configCors(app);
 configJson(app);
 configStatic(app);
-configCors(app);
 connectDB();
-configStatic(app);
 
 const PORT = process.env.PORT;
 const HOST = process.env.HOST;

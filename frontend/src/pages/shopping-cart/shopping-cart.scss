@@ -1,6 +1,5 @@
 @use "@/scss/variables" as var;
 
-
 .shopping-cart {
     display: flex;
     flex-direction: column;
@@ -14,7 +13,6 @@
                 color: var.$color-neutro-300;
                 font-weight: var.$font-weight-regular;
                 font-size: var.$font-size-sm;
-
             }
         }
 
@@ -38,10 +36,9 @@
         }
 
         &__total {
-            color: var.$color-neutro-800;
+            color: var.$color-neutro-300;
             font-weight: var.$font-weight-bold;
             font-size: var.$font-size-sm;
-            color: var.$color-neutro-300;
         }
 
         &__form {
@@ -50,6 +47,9 @@
             gap: var.$font-size-xl;
             height: 200px;
             padding: var.$font-size-xl;
+            background: linear-gradient(180deg, #04020a, #1F1B2E);
+            border-radius: 10px;
+            margin: var.$spacing-lg 0;
 
             @media (max-width: 1200px) {
                 grid-template-columns: repeat(4, 1fr);
@@ -72,10 +72,58 @@
                 display: flex;
                 gap: var.$font-size-xl;
             }
+
+            input {
+                padding: var.$spacing-sm;
+                font-size: var.$font-size-sm;
+                border: 1px solid var.$color-neutro-600;
+                border-radius: 4px;
+                background-color: var.$color-neutro-900;
+                color: var.$color-neutro-400;
+            }
+
+            input::placeholder {
+                color: var.$color-neutro-400;
+                text-align: center;
+                font-size: var.$font-size-sm;
+            }
+        }
+
+        &--actions {
+            display: flex;
+            gap: var.$font-size-xl;
+        }
+
+        &__button {
+            color: #fff;
+            background-color: #1a0f2e;
+            cursor: pointer;
+            font-size: var.$font-size-sm;
+
+            &:hover {
+                background-color: #0a051b;
+            }
+        }
+
+        &__btn {
+            padding: var.$spacing-sm var.$spacing-md;
+            font-size: var.$font-size-sm;
+            border-radius: 4px;
+            cursor: pointer;
+            border: 1px solid var.$color-danger-500;
+            transition: background-color 0.3s, border-color 0.3s;
+
+            &:hover {
+                background-color: var.$color-danger-300;
+                color: var.$color-neutro-900;
+            }
         }
     }
 
-    &__button {
-        color: var.$color-neutro-300;
+
+    &__title {
+        color: var.$color-neutro-400;
+        font-weight: var.$font-weight-bold;
+        font-size: var.$font-size-xl;
     }
 }

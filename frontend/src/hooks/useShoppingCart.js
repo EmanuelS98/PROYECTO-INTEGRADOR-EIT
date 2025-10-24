@@ -59,6 +59,12 @@ export const useShoppingCart = () => {
         localStorage.setItem(KEY_SHOPPING_CART, JSON.stringify(data));
         setShoppingCart(data);
     };
+    const removeArticle = (productId) => {
+        const articles = shoppingCart.articles.filter((item) => item.id !== productId);
+        const data = createShoppingCartSchema(articles);
+        localStorage.setItem(KEY_SHOPPING_CART, JSON.stringify(data));
+        setShoppingCart(data);
+    };
 
     const subtractArticle = async (idProduct, quantity) => {
         const product = await fetchProductById(idProduct);
@@ -80,6 +86,11 @@ export const useShoppingCart = () => {
             setShoppingCart(data);
         }
     };
+    const clearCart = () => {
+        const emptyCart = createShoppingCartSchema();
+        localStorage.setItem(KEY_SHOPPING_CART, JSON.stringify(emptyCart));
+        setShoppingCart(emptyCart);
+    };
 
     useEffect(() => {
         getShoppingCart();
@@ -89,5 +100,7 @@ export const useShoppingCart = () => {
         shoppingCart,
         addArticle,
         subtractArticle,
+        clearCart,
+        removeArticle,
     };
 };

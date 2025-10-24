@@ -34,6 +34,15 @@ export default class ProductController {
             res.status(handledError.code).json({ status: "error", message: handledError.message });
         }
     }
+    async findHighlighted(req, res) {
+        try {
+            const products = await this.#productService.findAll({ highlighted: true });
+            res.status(200).json({ status: "success", payload: products });
+        } catch (error) {
+            const handledError = ErrorService.handleError(error);
+            res.status(handledError.code).json({ status: "error", message: handledError.message });
+        }
+    }
 
     async create(req, res) {
         try {

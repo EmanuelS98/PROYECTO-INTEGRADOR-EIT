@@ -1,0 +1,114 @@
+.highlighted-section {
+    padding: 4rem 2rem;
+    background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%);
+
+    .highlighted-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .highlighted-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 3rem;
+        color: #fff;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+
+        &::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #0e001b, #000000);
+            margin: 1rem auto 0;
+        }
+    }
+
+    .highlighted-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+
+        @media (max-width: 768px) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .highlighted-card {
+        background: #1a1a1a;
+        border-radius: 12px;
+        overflow: hidden;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+
+        &:hover {
+            transform: translateY(-10px);
+            border-color: #140830;
+            box-shadow: 0 10px 30px rgb(23, 0, 53);
+        }
+
+        &__image {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            background: #0a0a0a;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.3s ease;
+            }
+        }
+
+        &:hover &__image img {
+            transform: scale(1.1);
+        }
+
+        &__content {
+            padding: 1.5rem;
+        }
+
+        &__name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        &__price {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        &__btn {
+            width: 100%;
+            padding: 0.75rem;
+            background: linear-gradient(90deg, #0e001b, #000000);
+            color: #0a0a0a;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            color: #fff;
+            transition: all 0.3s ease;
+
+            &:hover {
+                transform: scale(1.05);
+                box-shadow: 0 5px 15px rgba(22, 1, 61, 0.26);
+            }
+        }
+    }
+
+    .highlighted-loading {
+        text-align: center;
+        padding: 4rem 2rem;
+        color: #fff;
+        font-size: 1.2rem;
+    }
+}

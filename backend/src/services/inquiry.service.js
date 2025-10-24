@@ -5,16 +5,19 @@ export default class InquiryService {
     async sendInquiry(data) {
         const { name, surname, phone, email, inquiry } = data;
 
-        const from = `"${name} ${surname}" <${process.env.SMTP_USER}>`;
+        const from = `"${name} ${surname}" <${process.env.SMTP_FROM}>`;
         const to = process.env.SMTP_RECIPIENT;
         const subject = "Consulta Web";
         const contentHtml = `
         <div>
+        <div style="font-family: Arial, sans-serif; padding:20px;">
+            <h2 style="color: #333;">Nueva Consulta desde el sitio Web</h2>
             <p>Nombre: ${name}</p>
             <p>Apellido: ${surname}</p>
             <p>Teléfono: ${phone}</p>
             <p>Email: ${email}</p>
-            <p>Consulta: ${inquiry}</p>
+            <p>Consulta: </p>
+            <p style="background-color: #f5f5f5; padding: 10px; border-radius: 5px;">${inquiry}</p>
         </div>`;
 
         const result = await sendMail(from, to, subject, contentHtml);

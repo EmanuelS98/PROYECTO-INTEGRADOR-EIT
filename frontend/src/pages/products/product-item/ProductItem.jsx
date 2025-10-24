@@ -24,6 +24,7 @@ const ProductItem = (props) => {
     const { shoppingCartContext, productsContext } = useContext(AppContext);
     const { addArticle, subtractArticle } = shoppingCartContext;
     const { removeProduct } = productsContext || {};
+    const { removeArticle } = shoppingCartContext;
 
     const classes = `product-item ${className ?? ""}`;
 
@@ -39,9 +40,12 @@ const ProductItem = (props) => {
         subtractArticle(product.id, 1);
     };
 
-    const handleDeleteProduct = () => {
-        if (removeProduct) {
-            removeProduct(product.id);
+    const handleDeleteProduct = async () => {
+        try {
+            removeArticle(product.id);
+            await removeProduct(product.id);
+        } catch (error) {
+            console.error("Error al eliminar el producto:", error);
         }
     };
 

@@ -6,6 +6,7 @@ const router = Router();
 const productController = new ProductController();
 
 router.get("/", productController.findAll.bind(productController));
+router.get("/highlighted", productController.findHighlighted.bind(productController));
 router.get("/:id", productController.findById.bind(productController));
 router.post("/", uploader.single("image"), productController.create.bind(productController));
 router.put("/:id", uploader.single("image"), productController.update.bind(productController));
