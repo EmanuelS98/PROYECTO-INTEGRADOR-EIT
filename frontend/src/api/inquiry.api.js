@@ -14,6 +14,9 @@ const sendInquiry = async (values) => {
 
         if (response.status != 204) {
             throw new Error("Error al enviar el email");
+        }else{
+            console.log("Email enviado correctamente");
+            console.log(response);
         }
 
         return true;

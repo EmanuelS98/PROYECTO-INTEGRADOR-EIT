@@ -5,7 +5,7 @@ export default class InquiryService {
     async sendInquiry(data) {
         const { name, surname, phone, email, inquiry } = data;
 
-        const from = `"${name} ${surname}" <${process.env.SMTP_RECIPIENT}>`;
+        const from = `"${name} ${surname}" <${process.env.SMTP_USER}>`;
         const to = process.env.SMTP_RECIPIENT;
         const subject = "Consulta Web";
         const contentHtml = `
