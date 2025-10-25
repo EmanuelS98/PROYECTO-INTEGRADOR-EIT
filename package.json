@@ -9,7 +9,7 @@
     "lint": "concurrently \"cd backend && npm run lint\" \"cd frontend && npm run lint\""
   },
   "keywords": [],
-  "author": "Sergio Regalado Alessi",
+  "author": "Emanuel Solari",
   "license": "MIT",
   "workspaces": [
     "backend",
@@ -20,6 +20,7 @@
     "concurrently": "^9.1.2"
   },
   "dependencies": {
-    "rollup": "^4.52.4"
+    "rollup": "^4.52.4",
+    "sib-api-v3-sdk": "^8.5.0"
   }
 }
