@@ -20,6 +20,7 @@ export const getAllProducts = async () => {
 export const getHighlightedProducts = async () => {
     try {
         const response = await fetch(`${API_URL}/products/highlighted`);
+        console.log(API_URL, "api");
 
         if (!response.ok) {
             throw new Error("Error al obtener productos destacados");
